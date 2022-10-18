@@ -70,9 +70,6 @@ dim(bm)
 
 ############## After RunUMAP ##############
 #####multiplet elimination#####
-##ref:https://github.com/chris-mcginnis-ucsf/DoubletFinder
-#bm<-readRDS("/exdisk/sda1/scMouse/process/analysis/bm.rds")
-
 
 library(DoubletFinder)
 
@@ -104,12 +101,7 @@ filt.cell<-rownames(bm@meta.data[bm@meta.data[,8]=="Singlet",])
 length(filt.cell)
 
 
-bm.dmp1<-subset(bm, cells=filt.cell)
-#saveRDS(bm.dmp1, file = "bm_dmp_strictfilter_y1.rds")
-
-
-
-bm.dmp<-readRDS("/exdisk/sda1/scMouse/HN00162547/HN00162547_10X_RawData_Outs/process/analysis/bm_dmp_all_y1.rds")
+bm.dmp<-subset(bm, cells=filt.cell)
 
 
 bm.dmp <- RenameIdents(object = bm.dmp,
